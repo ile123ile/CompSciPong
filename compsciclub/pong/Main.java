@@ -1,12 +1,15 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+
+import javax.swing.*;
 
 public class Pong2 extends JFrame {
 	JPanel panel;
 	int ballCenterX, ballCenterY, lowerPaddleX, upperPaddleX, ballVelX, ballVelY, lowerPaddleVel, upperPaddleVel;
+	private Image dbImage;
+	private Graphics dbg;
 	public Pong2() {
 		setBackground(Color.black);
 		setTitle("Arena");
@@ -53,6 +56,16 @@ public class Pong2 extends JFrame {
 	        	
 	        }
 	    });	    
+	}
+	public void paint(Graphics g) {
+		dbImage = createImage(getWidth(), getHeight());
+		dbg = dbImage.getGraphics();
+		paintComponent(dbg);
+		g.drawImage(dbImage,  0,  0,  this);
+		
+	}
+	public void paintComponent(Graphics g) {
+		
 	}
 	public static void main(String[] args) {
 		new Pong2();
